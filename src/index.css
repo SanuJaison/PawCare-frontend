@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #EC4899;
+  --color-primary-dark: #DB2777;
+
+  --color-pink-bg: #FDF2F8;
+  --color-pink-card: #FCE7F3;
+
+  --color-heading: #111827;
+  --color-text: #4B5563;
+  --color-muted: #9CA3AF;
+
+  --color-success: #22C55E;
+  --color-warning: #F59E0B;
+  --color-danger: #EF4444;
+}
