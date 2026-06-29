@@ -11,7 +11,17 @@ import { GrLocation } from "react-icons/gr";
 import { GoClock } from "react-icons/go";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { FaRegHeart } from "react-icons/fa";
-import { updateUserAPI, getAllUsersAPI } from "../../services/allAPI";
+import {
+  deleteAdoptionRequestAPI,
+  deleteAppointmentAPI,
+  deleteOrderAPI,
+  deleteUserAPI,
+  getAllAdoptionRequestsAPI,
+  getAllOrdersAPI,
+  getAllUsersAPI,
+  getAppointmentsAPI,
+  updateUserAPI,
+} from "../../services/allAPI";
 
 const PetCenterUsers = () => {
   const [users, setUsers] = useState([]);
@@ -211,23 +221,71 @@ const PetCenterUsers = () => {
     }
   };
 
+  const isSameUser = (itemUserId, userId) => {
+    return itemUserId?.toString() === userId?.toString();
+  };
+
+  const deleteUserRelatedData = async (userId) => {
+    const [appointmentsResult, ordersResult, adoptionRequestsResult] =
+      await Promise.all([
+        getAppointmentsAPI(),
+        getAllOrdersAPI(),
+        getAllAdoptionRequestsAPI(),
+      ]);
+
+    const dataLoaded = [
+      appointmentsResult,
+      ordersResult,
+      adoptionRequestsResult,
+    ].every((result) => result.status >= 200 && result.status < 300);
+
+    if (!dataLoaded) {
+      return false;
+    }
+
+    const appointments = Array.isArray(appointmentsResult.data)
+      ? appointmentsResult.data
+      : [];
+    const orders = Array.isArray(ordersResult.data) ? ordersResult.data : [];
+    const adoptionRequests = Array.isArray(adoptionRequestsResult.data)
+      ? adoptionRequestsResult.data
+      : [];
+
+    const deleteResults = await Promise.all([
+      ...appointments
+        .filter((appointment) => isSameUser(appointment.userId, userId))
+        .map((appointment) => deleteAppointmentAPI(appointment.id)),
+      ...orders
+        .filter((order) => isSameUser(order.userId, userId))
+        .map((order) => deleteOrderAPI(order.id)),
+      ...adoptionRequests
+        .filter((request) => isSameUser(request.userId, userId))
+        .map((request) => deleteAdoptionRequestAPI(request.id)),
+    ]);
+
+    return deleteResults.every(
+      (result) => result.status >= 200 && result.status < 300,
+    );
+  };
+
   const handleDeleteUser = async (user) => {
     const confirmDelete = window.confirm(
-      `Are you sure you want to delete ${user.fullName}?`,
+      `Are you sure you want to delete ${user.fullName}? This will also remove their appointments, adoption requests, and orders.`,
     );
 
     if (!confirmDelete) return;
 
-    const result = await updateUserAPI(user.id, {
-      status: "Inactive",
-      isDeleted: true,
-      deletedByAdmin: true,
-      deletedByUser: false,
-      deletedAt: new Date().toISOString(),
-    });
+    const relatedDataDeleted = await deleteUserRelatedData(user.id);
+
+    if (!relatedDataDeleted) {
+      alert("Failed to delete the user's related data");
+      return;
+    }
+
+    const result = await deleteUserAPI(user.id);
 
     if (result.status >= 200 && result.status < 300) {
-      alert("User deleted successfully");
+      alert("User and related data deleted successfully");
       setShowMoreId(null);
       loadUsers();
     } else {

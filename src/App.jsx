@@ -1,4 +1,11 @@
-﻿import { Navigate, Route, Routes } from "react-router-dom";
+import { useEffect } from "react";
+import {
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import "./App.css";
 import PublicLayout from "./layouts/PublicLayout";
 import Home from "./public/Home";
@@ -29,6 +36,7 @@ import Wishlist from "./user/components/Wishlist";
 import PetCenterAdoptionRequests from "./petcenter/components/PetCenterAdoptionRequests";
 import SimpleInfoPage from "./components/SimpleInfoPage";
 import ScrollToTop from "./components/ScrollToTop";
+import { getAllUsersAPI } from "./services/allAPI";
 
 const UserProtectedRoute = ({ children }) => {
   const currentUser = JSON.parse(localStorage.getItem("user"));
@@ -42,10 +50,86 @@ const PetCenterProtectedRoute = ({ children }) => {
   return admin ? children : <Navigate to="/petcenter/login" replace />;
 };
 
+const AuthSync = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const getStoredUser = () => {
+      try {
+        return JSON.parse(localStorage.getItem("user"));
+      } catch {
+        localStorage.removeItem("user");
+        return null;
+      }
+    };
+
+    const logoutDeletedUser = () => {
+      localStorage.removeItem("user");
+      localStorage.removeItem("cart");
+      localStorage.removeItem("wishlist");
+      window.dispatchEvent(new Event("userUpdated"));
+
+      const userOnlyPaths = [
+        "/user-dashboard",
+        "/profile",
+        "/appointments",
+        "/orders",
+        "/adoptions",
+        "/wishlist",
+        "/checkout",
+      ];
+
+      if (userOnlyPaths.some((path) => location.pathname.startsWith(path))) {
+        alert(
+          "Your account was removed by the admin. Please contact PawCare support for help.",
+        );
+        navigate("/user/login", { replace: true });
+      }
+    };
+
+    const validateUser = async () => {
+      const storedUser = getStoredUser();
+
+      if (!storedUser?.id) return;
+
+      const result = await getAllUsersAPI();
+
+      if (
+        !isMounted ||
+        result.status < 200 ||
+        result.status >= 300 ||
+        !Array.isArray(result.data)
+      ) {
+        return;
+      }
+
+      const serverUser = result.data.find(
+        (user) => user.id?.toString() === storedUser.id?.toString(),
+      );
+
+      if (!serverUser || serverUser.isDeleted || serverUser.deletedByAdmin) {
+        logoutDeletedUser();
+      }
+    };
+
+    validateUser();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [location.pathname, navigate]);
+
+  return null;
+};
+
 function App() {
   return (
     <>
       <ScrollToTop />
+      <AuthSync />
       <Routes>
         <Route element={<PublicLayout />}>
           <Route path="/" element={<Home />} />

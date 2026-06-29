@@ -106,6 +106,11 @@ export const updateOrderAPI = async (id, reqBody) => {
   return await commonAPI("PATCH", `${serverURL}/orders/${id}`, reqBody);
 };
 
+//delete order
+export const deleteOrderAPI = async (id) => {
+  return await commonAPI("DELETE", `${serverURL}/orders/${id}`, "");
+};
+
 //get coupons
 export const getAllCouponsAPI = async () => {
   return await commonAPI("GET", `${serverURL}/coupons`, "");
