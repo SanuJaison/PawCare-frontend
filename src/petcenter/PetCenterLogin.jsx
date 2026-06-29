@@ -1,4 +1,4 @@
-// import React from 'react'
+﻿// import React from 'react'
 
 import { Link, useNavigate } from "react-router-dom";
 import loginImg from "../assets/adminlogin.png";
@@ -15,6 +15,11 @@ const PetCenterLogin = () => {
     e.preventDefault();
 
     const result = await petCenterLoginAPI();
+
+    if (result.status < 200 || result.status >= 300 || !Array.isArray(result.data)) {
+      alert("Unable to connect to PawCare server. Please try again after backend redeploy.");
+      return;
+    }
 
     const admin = result.data.find(
       (item) => item.email === email && item.password === password,
@@ -58,9 +63,7 @@ const PetCenterLogin = () => {
 
           <form onSubmit={handleLogin} className="mt-8 space-y-5">
             <div>
-              <label className="font-semibold text-heading">
-                Email Address
-              </label>
+              <label className="font-semibold text-heading">Email Address</label>
 
               <input
                 type="email"
@@ -91,10 +94,7 @@ const PetCenterLogin = () => {
                 Remember Me
               </label>
 
-              <Link
-                to="/forgot-password"
-                className="text-primary font-semibold"
-              >
+              <Link to="/forgot-password" className="text-primary font-semibold">
                 Forgot Password?
               </Link>
             </div>

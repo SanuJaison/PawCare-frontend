@@ -1,6 +1,4 @@
-// import React from 'react'
-
-import { Link, useNavigate } from "react-router-dom";
+﻿import { Link, useNavigate } from "react-router-dom";
 import loginImg from "../assets/userreg.png";
 import { useState } from "react";
 import { getAllUsersAPI, updateUserAPI } from "../services/allAPI";
@@ -25,8 +23,12 @@ const UserLogin = () => {
 
     try {
       const result = await getAllUsersAPI();
-      console.log(result);
-      
+
+      if (result.status < 200 || result.status >= 300 || !Array.isArray(result.data)) {
+        alert("Unable to connect to PawCare server. Please try again after backend redeploy.");
+        return;
+      }
+
       const existingUser = result.data.find(
         (user) => user.email.toLowerCase() === email.toLowerCase(),
       );
@@ -118,9 +120,7 @@ const UserLogin = () => {
 
           <form className="mt-8 space-y-5" onSubmit={handleLogin}>
             <div>
-              <label className="font-semibold text-heading">
-                Email Address
-              </label>
+              <label className="font-semibold text-heading">Email Address</label>
 
               <input
                 type="email"
@@ -155,10 +155,7 @@ const UserLogin = () => {
                 Remember Me
               </label>
 
-              <Link
-                to="/forgot-password"
-                className="text-primary font-semibold"
-              >
+              <Link to="/forgot-password" className="text-primary font-semibold">
                 Forgot Password?
               </Link>
             </div>

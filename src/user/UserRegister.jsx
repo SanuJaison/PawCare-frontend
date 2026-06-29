@@ -1,7 +1,7 @@
-import { Link, useNavigate } from "react-router-dom";
+﻿import { Link, useNavigate } from "react-router-dom";
 import { IoPaw } from "react-icons/io5";
 import registerImg from "../assets/userreg.png";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { getAllUsersAPI, registerUserAPI } from "../services/allAPI";
 
 const UserRegister = () => {
@@ -20,10 +20,6 @@ const UserRegister = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    console.log(userData);
-  }, [userData]);
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -50,6 +46,11 @@ const UserRegister = () => {
 
       const userRes = await getAllUsersAPI();
 
+      if (userRes.status < 200 || userRes.status >= 300 || !Array.isArray(userRes.data)) {
+        alert("Unable to connect to PawCare server. Please try again after backend redeploy.");
+        return;
+      }
+
       const existingUser = userRes.data.find(
         (user) => user.email.toLowerCase() === email.toLowerCase(),
       );
@@ -63,7 +64,6 @@ const UserRegister = () => {
           alert("Email already exists");
         }
 
-        setLoading(false);
         return;
       }
 
@@ -78,10 +78,9 @@ const UserRegister = () => {
 
       if (result.status >= 200 && result.status < 300) {
         alert("Registration Successful");
-
         navigate("/user/login");
       } else {
-        alert("Registration Failed");
+        alert("Registration Failed. Please check backend connection.");
       }
     } catch (err) {
       console.log(err);
@@ -168,9 +167,7 @@ const UserRegister = () => {
               </div>
 
               <div>
-                <label className="block font-semibold mb-2">
-                  Date of Birth
-                </label>
+                <label className="block font-semibold mb-2">Date of Birth</label>
 
                 <input
                   type="date"
@@ -222,9 +219,7 @@ const UserRegister = () => {
             </div>
 
             <div>
-              <label className="block font-semibold mb-2">
-                Confirm Password
-              </label>
+              <label className="block font-semibold mb-2">Confirm Password</label>
 
               <input
                 type="password"
@@ -237,9 +232,7 @@ const UserRegister = () => {
             </div>
 
             <div>
-              <label className="block font-semibold mb-2">
-                Profile Picture URL
-              </label>
+              <label className="block font-semibold mb-2">Profile Picture URL</label>
 
               <input
                 type="url"
