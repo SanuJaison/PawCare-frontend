@@ -1,1 +1,1 @@
-export const serverURL = "http://localhost:3000"
+export const serverURL = "https://pawcare-backend-1.onrender.com/"
