@@ -1,1 +1,1 @@
-export const serverURL = "https://pawcare-backend-1.onrender.com/"
+﻿export const serverURL = "https://pawcare-backend-1.onrender.com"
