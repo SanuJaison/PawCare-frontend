@@ -1,69 +1,67 @@
-// import React from 'react'
-import storyImg from "../../assets/female-kissing-dog.jpg";
+﻿import storyImg from "../../assets/female-kissing-dog.jpg";
 import missionImg from "../../assets/ourmission-Photoroom.png";
 import visionImg from "../../assets/ourvision-Photoroom.png";
-
-import { TbTargetArrow } from "react-icons/tb";
 import { FaRegEye } from "react-icons/fa";
 import { IoPaw } from "react-icons/io5";
+import { TbTargetArrow } from "react-icons/tb";
 
 const OurStory = () => {
   return (
-    <div className="px-10 py-16">
-      <div className="grid grid-cols-2 gap-10 items-center px-10">
+    <div className="px-4 py-12 sm:px-6 lg:px-10 lg:py-16">
+      <div className="grid items-center gap-10 lg:grid-cols-2 lg:px-10">
         <div>
           <img
             src={storyImg}
             alt="Our Story"
-            className="w-full h-105 object-cover rounded-3xl"
+            className="h-80 w-full rounded-3xl object-cover sm:h-105"
           />
         </div>
 
         <div>
-          <p className="text-primary font-bold">OUR STORY</p>
+          <p className="font-bold text-primary">OUR STORY</p>
 
-          <h2 className="text-5xl font-bold text-heading mt-2">
+          <h2 className="mt-2 text-3xl font-bold text-heading sm:text-4xl lg:text-5xl">
             A Passion For Pet Care
           </h2>
 
-          <p className="mt-6 text-text leading-relaxed font-semibold w-100">
+          <p className="mt-6 max-w-xl font-semibold leading-relaxed text-text">
             PawCare started with a simple mission: to create a safe, comfortable
             and loving environment for pets and their parents.
           </p>
 
-          <p className="mt-5 text-text leading-relaxed font-semibold w-100">
+          <p className="mt-5 max-w-xl font-semibold leading-relaxed text-text">
             Over the years, we've helped thousands of pets stay healthy, happy
-            and loved. Our dedicated team works every day with one goal — your
+            and loved. Our dedicated team works every day with one goal - your
             pet's well-being.
           </p>
 
-          <div className="flex items-center gap-3 mt-8">
-            <IoPaw className="text-primary text-3xl" />
+          <div className="mt-8 flex items-center gap-3">
+            <IoPaw className="text-3xl text-primary" />
 
-            <p className="text-primary text-3xl font-semibold italic">
+            <p className="text-2xl font-semibold italic text-primary sm:text-3xl">
               Because they deserve the best!
             </p>
           </div>
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-8 mt-10 px-10">
-        <div className="bg-pink-card rounded-3xl p-8 flex items-center justify-between overflow-hidden">
-          <div className="max-w-[60%]">
+      <div className="mt-10 grid gap-8 lg:grid-cols-2 lg:px-10">
+        <div className="flex flex-col gap-5 overflow-hidden rounded-3xl bg-pink-card p-6 sm:p-8 lg:flex-row lg:items-center lg:justify-between">
+          <div className="min-w-0 lg:max-w-[62%]">
             <div className="flex items-start gap-4">
-              <div className="w-16 h-16 min-w-16 rounded-full bg-primary flex items-center justify-center text-white text-3xl">
+              <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-primary text-3xl text-white">
                 <TbTargetArrow />
               </div>
 
-              <div>
+              <div className="min-w-0">
                 <p className="text-3xl font-bold text-heading">Our Mission</p>
 
-                <p className="text-text font-semibold leading-relaxed mt-4 text-justify">
+                <p className="mt-4 text-left font-semibold leading-relaxed text-text">
                   To provide exceptional pet care services while building
                   lasting relationships with pets and their owners.
                 </p>
 
-                <div className="w-12 h-1 bg-primary rounded-full mt-6"></div>
+                <div className="mt-6 h-1 w-12 rounded-full bg-primary"></div>
               </div>
             </div>
           </div>
@@ -71,26 +69,26 @@ const OurStory = () => {
           <img
             src={missionImg}
             alt="Mission"
-            className="w-52 h-52 object-contain"
+            className="mx-auto h-44 w-44 object-contain sm:h-52 sm:w-52"
           />
         </div>
 
-        <div className="bg-pink-card rounded-3xl p-8 flex items-center justify-between overflow-hidden">
-          <div className="max-w-[60%]">
+        <div className="flex flex-col gap-5 overflow-hidden rounded-3xl bg-pink-card p-6 sm:p-8 lg:flex-row lg:items-center lg:justify-between">
+          <div className="min-w-0 lg:max-w-[62%]">
             <div className="flex items-start gap-4">
-              <div className="w-16 h-16 min-w-16 rounded-full bg-primary flex items-center justify-center text-white text-3xl">
+              <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-primary text-3xl text-white">
                 <FaRegEye />
               </div>
 
-              <div>
+              <div className="min-w-0">
                 <h3 className="text-3xl font-bold text-heading">Our Vision</h3>
 
-                <p className="text-text font-semibold leading-relaxed mt-4 text-justify">
+                <p className="mt-4 text-left font-semibold leading-relaxed text-text">
                   To become the most trusted pet care center by offering quality
                   care, innovation and compassion in everything we do.
                 </p>
 
-                <div className="w-12 h-1 bg-primary rounded-full mt-6"></div>
+                <div className="mt-6 h-1 w-12 rounded-full bg-primary"></div>
               </div>
             </div>
           </div>
@@ -98,7 +96,7 @@ const OurStory = () => {
           <img
             src={visionImg}
             alt="Vision"
-            className="w-52 h-52 object-contain"
+            className="mx-auto h-44 w-44 object-contain sm:h-52 sm:w-52"
           />
         </div>
       </div>

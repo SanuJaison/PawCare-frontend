@@ -1,4 +1,4 @@
-﻿// import React from "react";
+// import React from "react";
 import { useEffect, useState } from "react";
 import { LuCalendar, LuDog, LuClock3 } from "react-icons/lu";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
@@ -86,7 +86,7 @@ const UserDashboard = () => {
   const adoptedPets = adoptions.filter((item) => item.status === "Approved");
 
   return (
-    <div className="flex-1 bg-gray-50 p-6 overflow-y-auto h-[calc(100vh-80px)]">
+    <div className="min-h-screen bg-gray-50 p-4 sm:p-6 lg:overflow-y-auto">
       <div>
         <p className="text-3xl font-bold text-heading">
           Welcome back,{" "}

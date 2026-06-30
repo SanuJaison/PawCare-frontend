@@ -1,4 +1,4 @@
-﻿// import React from 'react'
+// import React from 'react'
 
 import { Link, useNavigate } from "react-router-dom";
 import loginImg from "../assets/adminlogin.png";
@@ -37,9 +37,9 @@ const PetCenterLogin = () => {
   };
 
   return (
-    <div className="min-h-screen bg-pink-card flex items-center justify-center px-10 py-10">
-      <div className="bg-white rounded-3xl shadow-xl overflow-hidden max-w-7xl w-full grid grid-cols-2">
-        <div>
+    <div className="min-h-screen bg-pink-card flex items-center justify-center px-4 py-8 sm:px-6 lg:px-10">
+      <div className="grid w-full max-w-7xl overflow-hidden rounded-3xl bg-white shadow-xl lg:grid-cols-2">
+        <div className="hidden lg:block">
           <img
             src={loginImg}
             alt="Pet Center Login"
@@ -47,12 +47,12 @@ const PetCenterLogin = () => {
           />
         </div>
 
-        <div className="p-12 flex flex-col justify-center">
+        <div className="flex flex-col justify-center p-6 sm:p-8 lg:p-12">
           <p className="text-primary font-bold uppercase tracking-wide">
             Pet Center Portal
           </p>
 
-          <p className="text-4xl font-bold text-heading mt-2">
+          <p className="mt-2 text-3xl font-bold text-heading sm:text-4xl">
             Pet Center Login
           </p>
 
@@ -88,7 +88,7 @@ const PetCenterLogin = () => {
               />
             </div>
 
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <label className="flex items-center gap-2 text-sm">
                 <input type="checkbox" />
                 Remember Me
@@ -113,3 +113,6 @@ const PetCenterLogin = () => {
 };
 
 export default PetCenterLogin;
+
+
+

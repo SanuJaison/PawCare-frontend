@@ -1,4 +1,4 @@
-﻿import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import loginImg from "../assets/userreg.png";
 import { useState } from "react";
 import { getAllUsersAPI, updateUserAPI } from "../services/allAPI";
@@ -95,9 +95,9 @@ const UserLogin = () => {
   };
 
   return (
-    <div className="min-h-screen bg-pink-card flex items-center justify-center px-10 py-10">
-      <div className="bg-white rounded-3xl shadow-xl overflow-hidden max-w-7xl w-full grid grid-cols-2">
-        <div className="h-full">
+    <div className="min-h-screen bg-pink-card flex items-center justify-center px-4 py-8 sm:px-6 lg:px-10">
+      <div className="grid w-full max-w-7xl overflow-hidden rounded-3xl bg-white shadow-xl lg:grid-cols-2">
+        <div className="hidden lg:block">
           <img
             src={loginImg}
             alt="Login"
@@ -105,12 +105,12 @@ const UserLogin = () => {
           />
         </div>
 
-        <div className="p-12 flex flex-col justify-center">
+        <div className="flex flex-col justify-center p-6 sm:p-8 lg:p-12">
           <p className="text-primary font-bold uppercase tracking-wide">
             Welcome Back
           </p>
 
-          <p className="text-4xl font-bold text-heading mt-2">
+          <p className="mt-2 text-3xl font-bold text-heading sm:text-4xl">
             Login To <span className="text-primary">Paw</span>Care
           </p>
 
@@ -149,7 +149,7 @@ const UserLogin = () => {
               />
             </div>
 
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <label className="flex items-center gap-2 text-sm">
                 <input type="checkbox" />
                 Remember Me
@@ -181,3 +181,5 @@ const UserLogin = () => {
 };
 
 export default UserLogin;
+
+

@@ -177,8 +177,8 @@ const PetCenterAppointments = () => {
   ).length;
 
   return (
-    <div className="flex-1 bg-gray-50 p-6 min-h-screen">
-      <div className="flex justify-between items-start gap-5">
+    <div className="flex-1 min-w-0 overflow-x-hidden bg-gray-50 p-4 sm:p-6 min-h-screen">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <p className="text-3xl font-bold text-heading">Appointments</p>
 
@@ -187,7 +187,7 @@ const PetCenterAppointments = () => {
           </p>
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center">
           <div className="relative">
             <input
               type="text"
@@ -197,7 +197,7 @@ const PetCenterAppointments = () => {
                 setCurrentPage(1);
               }}
               placeholder="Search appointments..."
-              className="w-72 border border-gray-200 bg-white rounded-xl px-4 py-3 pr-10 outline-none focus:border-primary"
+              className="w-full border border-gray-200 bg-white rounded-xl px-4 py-3 pr-10 outline-none focus:border-primary sm:w-72"
             />
 
             <IoSearchOutline className="absolute right-4 top-1/2 -translate-y-1/2 text-xl text-gray-400" />
@@ -209,7 +209,7 @@ const PetCenterAppointments = () => {
               setStatusFilter(e.target.value);
               setCurrentPage(1);
             }}
-            className="w-48 border border-gray-200 bg-white rounded-xl px-4 py-3 outline-none font-semibold"
+            className="w-full border border-gray-200 bg-white rounded-xl px-4 py-3 outline-none font-semibold sm:w-48"
           >
             <option>All Status</option>
             <option>Pending</option>
@@ -220,7 +220,7 @@ const PetCenterAppointments = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-4 gap-5 mt-6">
+      <div className="mt-6 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5">
           <div className="flex items-center gap-4">
             <div className="w-16 h-16 rounded-full bg-pink-card flex items-center justify-center">
@@ -288,15 +288,15 @@ const PetCenterAppointments = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-12 gap-6 mt-6">
-        <div className="col-span-8 bg-white rounded-2xl shadow-sm border border-gray-100 min-h-[620px] flex flex-col overflow-visible">
+      <div className="mt-6 grid grid-cols-1 gap-6 xl:grid-cols-12">
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 min-h-[620px] flex flex-col overflow-visible xl:col-span-8">
           <div className="p-5 border-b border-gray-100">
             <p className="text-xl font-bold">All Appointments</p>
           </div>
 
           {paginatedAppointments.length > 0 ? (
             <>
-              <div className="grid grid-cols-[2fr_2.3fr_1.5fr_1.1fr_1.3fr_1fr] gap-5 bg-gray-50 px-6 py-4 text-sm font-bold text-text">
+              <div className="hidden bg-gray-50 px-6 py-4 text-sm font-bold text-text xl:grid xl:grid-cols-[2fr_2.3fr_1.5fr_1.1fr_1.3fr_1fr] xl:gap-5">
                 <div>Pet</div>
                 <div>Service</div>
                 <div>Date</div>
@@ -309,7 +309,7 @@ const PetCenterAppointments = () => {
                 {paginatedAppointments.map((item) => (
                   <div
                     key={item.id}
-                    className="grid grid-cols-[2fr_2.3fr_1.5fr_1.1fr_1.3fr_1fr] gap-5 items-center px-6 py-5 border-t border-gray-100 relative"
+                    className="grid gap-3 border-t border-gray-100 px-4 py-5 relative sm:px-6 xl:grid-cols-[2fr_2.3fr_1.5fr_1.1fr_1.3fr_1fr] xl:items-center xl:gap-5"
                   >
                     <div className="flex items-center gap-4 min-w-0">
                       {item.petData?.photo ? (
@@ -439,7 +439,7 @@ const PetCenterAppointments = () => {
                 ))}
               </div>
 
-              <div className="p-5 border-t border-gray-100 mt-auto flex justify-between items-center">
+              <div className="mt-auto flex flex-col gap-3 border-t border-gray-100 p-5 sm:flex-row sm:items-center sm:justify-between">
                 <p className="text-sm text-text font-semibold">
                   Showing {paginatedAppointments.length} of{" "}
                   {filteredAppointments.length} appointments
@@ -489,7 +489,7 @@ const PetCenterAppointments = () => {
           )}
         </div>
 
-        <div className="col-span-4 space-y-6">
+        <div className="space-y-6 xl:col-span-4">
           <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5">
             <div className="flex justify-between items-center mb-5">
               <p className="text-lg font-bold">

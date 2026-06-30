@@ -67,10 +67,10 @@ const ServicesGrid = () => {
   ];
   return (
     <>
-      <div className="py-10">
+      <div className="px-4 py-10 sm:px-6">
         <div className="text-center space-y-2">
           <p className="text-primary-dark font-bold mt-2">OUR SERVICES</p>
-          <p className="text-heading text-5xl font-bold">
+          <p className="text-heading text-3xl font-bold sm:text-4xl lg:text-5xl">
             Everything Your Pet Needs
           </p>
           <div className="flex items-center gap-2 justify-center mt-4 mb-10">
@@ -79,7 +79,7 @@ const ServicesGrid = () => {
             <div className="h-0.5 w-16 bg-primary/40"></div>
           </div>
         </div>
-        <div className="grid grid-cols-3 gap-10 px-50">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10 xl:px-20">
           {services.map((service) => (
             <ServicePageCard key={service.id} service={service} />
           ))}

@@ -199,7 +199,7 @@ const PetCenterOrders = () => {
   };
 
   return (
-    <div className="flex-1 bg-gray-50 p-6 min-h-screen">
+    <div className="flex-1 min-w-0 overflow-x-hidden bg-gray-50 p-4 sm:p-6 min-h-screen">
       <div>
         <p className="text-3xl font-bold text-heading">Orders</p>
 
@@ -208,7 +208,7 @@ const PetCenterOrders = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-4 gap-4 mt-6">
+      <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         <div className="relative">
           <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
 
@@ -270,7 +270,7 @@ const PetCenterOrders = () => {
         </select>
       </div>
 
-      <div className="grid grid-cols-4 gap-5 mt-5">
+      <div className="mt-5 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
         <div className="bg-white border border-gray-100 rounded-2xl p-5 flex items-center gap-4">
           <div className="w-16 h-16 rounded-full bg-pink-card flex items-center justify-center">
             <IoBagHandleOutline className="text-primary text-3xl" />
@@ -326,15 +326,15 @@ const PetCenterOrders = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-12 gap-6 mt-6">
-        <div className="col-span-9 bg-white rounded-2xl shadow-sm border border-gray-100 min-h-[700px] flex flex-col overflow-visible">
+      <div className="mt-6 grid grid-cols-1 gap-6 xl:grid-cols-12">
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 min-h-[700px] flex flex-col overflow-visible xl:col-span-9">
           <div className="p-5 border-b border-gray-100">
             <p className="text-xl font-bold">All Orders</p>
           </div>
 
           {paginatedOrders.length > 0 ? (
             <>
-              <div className="grid grid-cols-[1.35fr_1.75fr_1.35fr_1.15fr_1fr_1.2fr_1.25fr_1fr] gap-6 bg-gray-50 px-6 py-4 text-sm font-bold text-text">
+              <div className="hidden bg-gray-50 px-6 py-4 text-sm font-bold text-text xl:grid xl:grid-cols-[1.35fr_1.75fr_1.35fr_1.15fr_1fr_1.2fr_1.25fr_1fr] xl:gap-6">
                 <div>Order</div>
                 <div>Customer</div>
                 <div>Products</div>
@@ -349,7 +349,7 @@ const PetCenterOrders = () => {
                 {paginatedOrders.map((order) => (
                   <div
                     key={order.id}
-                    className="grid grid-cols-[1.35fr_1.75fr_1.35fr_1.15fr_1fr_1.2fr_1.25fr_1fr] gap-6 items-center px-6 py-5 border-t border-gray-100 relative"
+                    className="grid gap-3 border-t border-gray-100 px-4 py-5 relative sm:px-6 xl:grid-cols-[1.35fr_1.75fr_1.35fr_1.15fr_1fr_1.2fr_1.25fr_1fr] xl:items-center xl:gap-6"
                   >
                     <div className="flex items-center gap-3 min-w-0">
                       <span
@@ -500,7 +500,7 @@ const PetCenterOrders = () => {
                 ))}
               </div>
 
-              <div className="p-5 border-t border-gray-100 mt-auto flex justify-between items-center">
+              <div className="mt-auto flex flex-col gap-3 border-t border-gray-100 p-5 sm:flex-row sm:items-center sm:justify-between">
                 <p className="text-sm text-text font-semibold">
                   Showing {paginatedOrders.length} of {filteredOrders.length}{" "}
                   orders
@@ -550,7 +550,7 @@ const PetCenterOrders = () => {
           )}
         </div>
 
-        <div className="col-span-3 space-y-6">
+        <div className="space-y-6 xl:col-span-3">
           <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5">
             <div className="flex justify-between items-center mb-5">
               <p className="text-lg font-bold">Today's Orders</p>
@@ -740,7 +740,7 @@ const PetCenterOrders = () => {
             </div>
 
             <div className="px-8 pb-8 space-y-6">
-              <div className="border border-pink-200 bg-pink-50 rounded-2xl p-6 flex justify-between items-center">
+              <div className="grid gap-4 rounded-2xl border border-pink-200 bg-pink-50 p-6 sm:grid-cols-2 xl:grid-cols-4">
                 <div>
                   <p className="text-sm text-gray-500">Order Date</p>
                   <p className="font-bold text-xl">
@@ -810,7 +810,7 @@ const PetCenterOrders = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid gap-6 md:grid-cols-2">
                 <div className="border border-gray-100 rounded-2xl p-6">
                   <div className="flex items-center gap-3 mb-4">
                     <FaRegUser className="text-primary text-2xl" />

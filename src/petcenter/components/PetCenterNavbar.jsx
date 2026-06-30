@@ -1,48 +1,58 @@
-// import React from "react";
-import { IoSearchOutline } from "react-icons/io5";
 import { IoIosNotificationsOutline } from "react-icons/io";
+import { IoMenu, IoPaw, IoSearchOutline } from "react-icons/io5";
 import { MdOutlineEmail } from "react-icons/md";
-import { IoPaw } from "react-icons/io5";
 
-const PetCenterNavbar = () => {
+const PetCenterNavbar = ({ onMenuClick }) => {
   return (
-    <div className="h-20 bg-white border-b border-gray-200 shadow-sm flex items-center justify-between px-8">
-      <div className="relative w-105">
-        <IoSearchOutline className="absolute left-4 top-1/2 -translate-y-1/2 text-2xl text-gray-400" />
+    <div className="flex min-h-20 flex-col gap-3 border-b border-gray-200 bg-white px-4 py-4 shadow-sm sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+      <div className="flex w-full items-center gap-3 lg:w-auto">
+        <button
+          type="button"
+          onClick={onMenuClick}
+          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-gray-200 bg-white text-3xl text-heading shadow-sm transition hover:bg-gray-50 lg:hidden"
+        >
+          <IoMenu />
+        </button>
 
-        <input
-          type="text"
-          placeholder="Search users, pets, appointments, products..."
-          className="w-full h-12 pl-12 pr-4 rounded-xl border border-gray-200 outline-none focus:border-primary text-sm font-medium"
-        />
+        <div className="relative min-w-0 flex-1 lg:w-105 lg:flex-none">
+          <IoSearchOutline className="absolute left-4 top-1/2 -translate-y-1/2 text-2xl text-gray-400" />
+
+          <input
+            type="text"
+            placeholder="Search users, pets, appointments, products..."
+            className="h-12 w-full rounded-xl border border-gray-200 pl-12 pr-4 text-sm font-medium outline-none focus:border-primary"
+          />
+        </div>
       </div>
 
-      <div className="flex items-center">
-        <button className="relative px-6 py-5 border-gray-200">
-          <IoIosNotificationsOutline className="text-3xl text-heading" />
+      <div className="flex items-center justify-between lg:justify-end">
+        <div className="flex items-center">
+          <button className="relative rounded-xl px-4 py-3 hover:bg-gray-50 sm:px-5">
+            <IoIosNotificationsOutline className="text-3xl text-heading" />
 
-          <span className="absolute top-3 right-4 w-5 h-5 rounded-full bg-primary text-white text-[10px] font-bold flex items-center justify-center">
-            8
-          </span>
-        </button>
+            <span className="absolute right-3 top-2 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-white sm:right-4">
+              8
+            </span>
+          </button>
 
-        <button className="relative px-6 py-5 border-gray-200">
-          <MdOutlineEmail className="text-2xl text-heading" />
+          <button className="relative rounded-xl px-4 py-3 hover:bg-gray-50 sm:px-5">
+            <MdOutlineEmail className="text-2xl text-heading" />
 
-          <span className="absolute top-3 right-3 w-5 h-5 rounded-full bg-primary text-white text-[10px] font-bold flex items-center justify-center">
-            5
-          </span>
-        </button>
+            <span className="absolute right-3 top-2 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-white">
+              5
+            </span>
+          </button>
+        </div>
 
-        <div className="flex items-center gap-4 pl-6 ml-2 border-l-2 border-l-gray-100 border-gray-200">
-          <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
+        <div className="ml-2 flex items-center gap-3 border-l-2 border-l-gray-100 pl-4 sm:gap-4 sm:pl-6">
+          <div className="flex h-11 w-11 items-center justify-center rounded-full bg-primary sm:h-12 sm:w-12">
             <IoPaw className="text-3xl text-white" />
           </div>
 
-          <div>
+          <div className="hidden sm:block">
             <p className="font-bold text-heading">Admin</p>
 
-            <p className="text-sm text-text font-semibold">Super Admin</p>
+            <p className="text-sm font-semibold text-text">Super Admin</p>
           </div>
         </div>
       </div>

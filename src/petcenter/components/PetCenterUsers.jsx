@@ -294,8 +294,8 @@ const PetCenterUsers = () => {
   };
 
   return (
-    <div className="flex-1 bg-gray-50 p-6 min-h-screen">
-      <div className="flex justify-between items-start">
+    <div className="flex-1 min-w-0 overflow-x-hidden bg-gray-50 p-4 sm:p-6 min-h-screen">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <p className="text-3xl font-bold text-heading">Users</p>
 
@@ -304,18 +304,18 @@ const PetCenterUsers = () => {
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center">
           <div className="relative">
             <button
               onClick={() => setShowFilter(!showFilter)}
-              className="border border-gray-200 bg-white px-5 py-3 rounded-xl font-semibold hover:bg-gray-50 transition flex items-center gap-2"
+              className="flex w-full items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white px-5 py-3 font-semibold transition hover:bg-gray-50 sm:w-auto"
             >
               <PiFunnelThin className="text-xl" />
               {selectedFilterLabel}
             </button>
 
             {showFilter && (
-              <div className="absolute right-0 top-14 bg-white border border-gray-100 rounded-2xl shadow-lg w-52 overflow-hidden z-20">
+              <div className="absolute left-0 right-0 top-14 z-20 overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-lg sm:left-auto sm:w-52">
                 {filterOptions.map((option) => (
                   <button
                     key={option.value}
@@ -342,7 +342,7 @@ const PetCenterUsers = () => {
               value={searchKey}
               onChange={(e) => setSearchKey(e.target.value)}
               placeholder="Search users..."
-              className="w-64 border border-gray-200 bg-white rounded-xl px-4 py-3 pr-10 outline-none focus:border-primary"
+              className="w-full border border-gray-200 bg-white rounded-xl px-4 py-3 pr-10 outline-none focus:border-primary sm:w-64"
             />
 
             <IoSearchOutline className="absolute right-4 top-1/2 -translate-y-1/2 text-xl text-gray-400" />
@@ -350,7 +350,7 @@ const PetCenterUsers = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-4 gap-5 mt-6">
+      <div className="mt-6 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5">
           <div className="flex items-center gap-4">
             <div className="w-16 h-16 rounded-full bg-pink-card flex items-center justify-center">
@@ -416,27 +416,27 @@ const PetCenterUsers = () => {
         </div>
       </div>
 
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mt-6">
+      <div className="mt-6 rounded-2xl border border-gray-100 bg-white p-4 shadow-sm sm:p-6">
         <p className="text-xl font-bold mb-5">All Users</p>
 
         {filteredUsers.length > 0 ? (
           <>
             <div className="border border-gray-100 rounded-2xl overflow-visible">
-              <div className="grid grid-cols-12 bg-gray-50 px-6 py-4 text-sm font-bold text-text rounded-t-2xl">
+              <div className="hidden rounded-t-2xl bg-gray-50 px-6 py-4 text-sm font-bold text-text xl:grid xl:grid-cols-12">
                 <div className="col-span-3">User</div>
                 <div className="col-span-3">Email</div>
                 <div className="col-span-2">Phone</div>
                 <div className="col-span-2">Joined Date</div>
-                <div className="col-span-1">Status</div>
+                <div className="xl:col-span-1">Status</div>
                 <div className="col-span-1 text-center">Actions</div>
               </div>
 
               {filteredUsers.map((user) => (
                 <div
                   key={user.id}
-                  className="grid grid-cols-12 items-center px-6 py-5 border-t border-gray-100 relative"
+                  className="grid gap-3 border-t border-gray-100 px-4 py-5 relative sm:px-6 xl:grid-cols-12 xl:items-center"
                 >
-                  <div className="col-span-3 flex items-center gap-3 min-w-0">
+                  <div className="flex min-w-0 items-center gap-3 xl:col-span-3">
                     {user.profilePic ? (
                       <img
                         src={user.profilePic}
@@ -457,19 +457,19 @@ const PetCenterUsers = () => {
                     </div>
                   </div>
 
-                  <div className="col-span-3 text-sm text-text font-semibold pr-10 break-words">
+                  <div className="break-words text-sm font-semibold text-text xl:col-span-3 xl:pr-10">
                     {displayValue(user.email)}
                   </div>
 
-                  <div className="col-span-2 text-sm text-text font-semibold pr-8 break-words">
+                  <div className="break-words text-sm font-semibold text-text xl:col-span-2 xl:pr-8">
                     {displayValue(user.phone)}
                   </div>
 
-                  <div className="col-span-2 text-sm text-text font-semibold">
+                  <div className="text-sm font-semibold text-text xl:col-span-2">
                     {formatDate(user.createdAt)}
                   </div>
 
-                  <div className="col-span-1">
+                  <div className="xl:col-span-1">
                     <span
                       className={`px-3 py-1 rounded-full text-xs font-semibold ${getStatusStyle(
                         user,
@@ -479,7 +479,7 @@ const PetCenterUsers = () => {
                     </span>
                   </div>
 
-                  <div className="col-span-1 flex justify-center gap-3 relative">
+                  <div className="relative flex gap-3 xl:col-span-1 xl:justify-center">
                     <button
                       onClick={() => handleViewUser(user)}
                       className="w-10 h-10 rounded-xl border border-gray-200 flex items-center justify-center hover:bg-pink-card hover:text-primary transition"
@@ -527,7 +527,7 @@ const PetCenterUsers = () => {
               ))}
             </div>
 
-            <div className="flex justify-between items-center mt-6">
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <p className="text-sm text-text font-semibold">
                 Showing 1 to {filteredUsers.length} of {visibleUsers.length}{" "}
                 users
@@ -585,8 +585,8 @@ const PetCenterUsers = () => {
             </div>
 
             <div className="px-6 pb-6 space-y-5">
-              <div className="border border-gray-100 rounded-2xl p-5 grid grid-cols-12 gap-5 items-center">
-                <div className="col-span-7 flex items-center gap-5">
+              <div className="grid gap-5 rounded-2xl border border-gray-100 p-5 md:grid-cols-12 md:items-center">
+                <div className="flex flex-col gap-5 sm:flex-row sm:items-center md:col-span-7">
                   {selectedUser.profilePic ? (
                     <img
                       src={selectedUser.profilePic}
@@ -618,7 +618,7 @@ const PetCenterUsers = () => {
                   </div>
                 </div>
 
-                <div className="col-span-5 border-l border-gray-100 pl-6">
+                <div className="border-gray-100 md:col-span-5 md:border-l md:pl-6">
                   <div className="flex items-center gap-3">
                     <div className="w-12 h-12 rounded-full bg-pink-card text-primary flex items-center justify-center">
                       <LuCalendar className="text-2xl" />
@@ -640,7 +640,7 @@ const PetCenterUsers = () => {
               <div className="border border-gray-100 rounded-2xl p-5">
                 <p className="text-lg font-bold mb-5">Contact Information</p>
 
-                <div className="grid grid-cols-3 gap-5">
+                <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
                   <div className="flex gap-3">
                     <div className="w-11 h-11 rounded-full bg-pink-card text-primary flex items-center justify-center flex-shrink-0">
                       <MdOutlineEmail className="text-2xl" />
@@ -692,7 +692,7 @@ const PetCenterUsers = () => {
               <div className="border border-gray-100 rounded-2xl p-5">
                 <p className="text-lg font-bold mb-5">Personal Information</p>
 
-                <div className="grid grid-cols-2 gap-5">
+                <div className="grid gap-5 md:grid-cols-2">
                   <div className="flex gap-3">
                     <div className="w-11 h-11 rounded-full bg-pink-card text-primary flex items-center justify-center flex-shrink-0">
                       <LuCalendar className="text-2xl" />
@@ -732,8 +732,8 @@ const PetCenterUsers = () => {
               <div className="border border-gray-100 rounded-2xl p-5">
                 <p className="text-lg font-bold mb-5">Account Activity</p>
 
-                <div className="grid grid-cols-4 gap-4">
-                  <div className="flex items-center gap-3 border-r border-gray-100">
+                <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+                  <div className="flex items-center gap-3 xl:border-r xl:border-gray-100">
                     <div className="w-11 h-11 rounded-full bg-pink-card text-primary flex items-center justify-center">
                       <LuCalendar className="text-2xl" />
                     </div>
@@ -747,7 +747,7 @@ const PetCenterUsers = () => {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-3 border-r border-gray-100">
+                  <div className="flex items-center gap-3 xl:border-r xl:border-gray-100">
                     <div className="w-11 h-11 rounded-full bg-pink-card text-primary flex items-center justify-center">
                       <HiOutlineShoppingBag className="text-2xl" />
                     </div>
@@ -761,7 +761,7 @@ const PetCenterUsers = () => {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-3 border-r border-gray-100">
+                  <div className="flex items-center gap-3 xl:border-r xl:border-gray-100">
                     <div className="w-11 h-11 rounded-full bg-pink-card text-primary flex items-center justify-center">
                       <FaRegHeart className="text-xl" />
                     </div>

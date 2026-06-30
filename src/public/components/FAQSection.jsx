@@ -1,9 +1,8 @@
-// import React from 'react'
-import { useState } from "react";
-import faqImg from "../../assets/faq-Photoroom.png";
+﻿import { useState } from "react";
+import { FiMinus, FiPlus } from "react-icons/fi";
 import { IoPaw } from "react-icons/io5";
-import { FiPlus, FiMinus } from "react-icons/fi";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
+import faqImg from "../../assets/faq-Photoroom.png";
 
 const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState(null);
@@ -40,11 +39,10 @@ const FAQSection = () => {
   };
 
   return (
-    <div className="px-10 py-16">
-      <div className="bg-pink-card rounded-3xl px-20">
-        <div className="grid grid-cols-2 gap-10 items-center">
-
-          <div className="flex justify-center">
+    <div className="px-4 py-12 sm:px-6 lg:px-10 lg:py-16">
+      <div className="rounded-3xl bg-pink-card px-4 py-8 sm:px-8 lg:px-20 lg:py-0">
+        <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-10">
+          <div className="hidden justify-center lg:flex">
             <img
               src={faqImg}
               alt="FAQ Dog"
@@ -53,12 +51,12 @@ const FAQSection = () => {
           </div>
 
           <div>
-            <p className="text-primary font-bold uppercase flex items-center gap-2">
+            <p className="flex items-center gap-2 font-bold uppercase text-primary">
               Quick Help
               <IoPaw />
             </p>
 
-            <p className="text-4xl font-bold text-heading mt-2 mb-8">
+            <p className="mb-8 mt-2 text-3xl font-bold text-heading sm:text-4xl">
               Frequently Asked Questions
             </p>
 
@@ -66,23 +64,23 @@ const FAQSection = () => {
               {faqs.map((faq, index) => (
                 <div
                   key={index}
-                  className="bg-white rounded-xl border border-pink-100 overflow-hidden"
+                  className="overflow-hidden rounded-xl border border-pink-100 bg-white"
                 >
                   <button
                     onClick={() => toggleAccordion(index)}
-                    className="w-full flex items-center justify-between px-5 py-4 text-left font-semibold text-heading hover:bg-pink-50 transition"
+                    className="flex w-full items-center gap-4 px-5 py-4 text-left font-semibold text-heading transition hover:bg-pink-50"
                   >
-                    <span>{faq.question}</span>
+                    <span className="min-w-0 flex-1">{faq.question}</span>
 
                     {openIndex === index ? (
-                      <FiMinus className="text-primary text-xl" />
+                      <FiMinus className="ml-auto shrink-0 text-xl text-primary" />
                     ) : (
-                      <FiPlus className="text-heading text-xl" />
+                      <FiPlus className="ml-auto shrink-0 text-xl text-heading" />
                     )}
                   </button>
 
                   {openIndex === index && (
-                    <div className="px-5 pb-4 text-text leading-relaxed">
+                    <div className="px-5 pb-4 leading-relaxed text-text">
                       {faq.answer}
                     </div>
                   )}
@@ -90,7 +88,7 @@ const FAQSection = () => {
               ))}
             </div>
 
-            <button className="flex items-center gap-2 text-primary font-bold mt-6 hover:gap-3 transition-all">
+            <button className="mt-6 flex items-center gap-2 font-bold text-primary transition-all hover:gap-3">
               View All FAQs
               <MdKeyboardDoubleArrowRight />
             </button>

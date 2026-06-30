@@ -7,8 +7,8 @@ import { FaHeadset } from "react-icons/fa6";
 const FeaturesBar = () => {
   return (
     <>
-      <div className="flex justify-around mb-5 border-t-3 border-b-3 border-pink-100 shadow-lg">
-        <div className="flex gap-2 p-5 items-center">
+      <div className="mb-5 flex flex-wrap justify-center gap-2 border-y-3 border-pink-100 px-4 py-3 shadow-lg">
+        <div className="flex min-w-52 flex-1 items-center gap-2 rounded-2xl p-3 sm:p-5">
           <div className="bg-pink-card w-15 h-15 rounded-full flex items-center justify-center">
             <BiCheckShield className="text-4xl text-primary" />
           </div>
@@ -18,7 +18,7 @@ const FeaturesBar = () => {
           </p>
         </div>
 
-        <div className="flex gap-2 p-5 items-center">
+        <div className="flex min-w-52 flex-1 items-center gap-2 rounded-2xl p-3 sm:p-5">
           <div className="bg-pink-card w-15 h-15 rounded-full flex items-center justify-center">
             <RxLoop className="text-3xl text-primary" />
           </div>
@@ -28,7 +28,7 @@ const FeaturesBar = () => {
           </p>
         </div>
 
-        <div className="flex gap-2 p-5 items-center">
+        <div className="flex min-w-52 flex-1 items-center gap-2 rounded-2xl p-3 sm:p-5">
           <div className="bg-pink-card w-15 h-15 rounded-full flex items-center justify-center">
             <RiSecurePaymentLine className="text-4xl text-primary" />
           </div>
@@ -38,7 +38,7 @@ const FeaturesBar = () => {
           </p>
         </div>
 
-        <div className="flex gap-2 p-5 items-center">
+        <div className="flex min-w-52 flex-1 items-center gap-2 rounded-2xl p-3 sm:p-5">
           <div className="bg-pink-card w-15 h-15 rounded-full flex items-center justify-center">
             <FaHeadset className="text-3xl text-primary" />
           </div>

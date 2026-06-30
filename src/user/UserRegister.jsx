@@ -1,4 +1,4 @@
-﻿import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IoPaw } from "react-icons/io5";
 import registerImg from "../assets/userreg.png";
 import { useState } from "react";
@@ -91,9 +91,9 @@ const UserRegister = () => {
   };
 
   return (
-    <div className="min-h-screen bg-pink-card flex items-center justify-center px-6 py-10">
-      <div className="bg-white rounded-3xl shadow-lg overflow-hidden w-full max-w-7xl grid md:grid-cols-2">
-        <div className="hidden md:block">
+    <div className="min-h-screen bg-pink-card flex items-center justify-center px-4 py-8 sm:px-6 lg:py-10">
+      <div className="grid w-full max-w-7xl overflow-hidden rounded-3xl bg-white shadow-lg lg:grid-cols-2">
+        <div className="hidden lg:block">
           <img
             src={registerImg}
             alt="Register"
@@ -101,7 +101,7 @@ const UserRegister = () => {
           />
         </div>
 
-        <div className="p-10">
+        <div className="p-6 sm:p-8 lg:p-10">
           <div className="flex items-center gap-2 mb-8">
             <IoPaw className="text-primary text-5xl" />
 
@@ -148,7 +148,7 @@ const UserRegister = () => {
               />
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid gap-4 sm:grid-cols-2">
               <div>
                 <label className="block font-semibold mb-2">Phone Number</label>
 
@@ -279,3 +279,7 @@ const UserRegister = () => {
 };
 
 export default UserRegister;
+
+
+
+

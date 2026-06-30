@@ -229,8 +229,8 @@ const PetCenterPets = () => {
   };
 
   return (
-    <div className="flex-1 bg-gray-50 p-6 min-h-screen">
-      <div className="flex justify-between items-start">
+    <div className="flex-1 min-w-0 overflow-x-hidden bg-gray-50 p-4 sm:p-6 min-h-screen">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <p className="text-3xl font-bold text-heading">Pets</p>
 
@@ -248,8 +248,8 @@ const PetCenterPets = () => {
       </div>
 
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 mt-6">
-        <div className="grid grid-cols-4 gap-4">
-          <div className="relative col-span-1">
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          <div className="relative">
             <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
 
             <input
@@ -273,7 +273,7 @@ const PetCenterPets = () => {
             }}
             className="border border-gray-200 rounded-xl px-4 py-3 font-semibold outline-none"
           >
-            <option>All Pets</option>
+            <option>All Animals</option>
             <option>Dog</option>
             <option>Cat</option>
             <option>Rabbit</option>
@@ -312,7 +312,7 @@ const PetCenterPets = () => {
           </select>
         </div>
 
-        <div className="grid grid-cols-4 gap-5 mt-5">
+        <div className="mt-5 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           <div className="border border-gray-100 rounded-2xl p-5 flex items-center gap-4">
             <div className="w-16 h-16 rounded-full bg-pink-card flex items-center justify-center">
               <IoPaw className="text-primary text-3xl" />
@@ -369,7 +369,7 @@ const PetCenterPets = () => {
 
       {filteredPets.length > 0 ? (
         <>
-          <div className="grid grid-cols-4 gap-6 mt-8">
+          <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             {filteredPets.slice(0, visiblePets).map((pet) => (
               <div
                 key={pet.id}
@@ -492,7 +492,7 @@ const PetCenterPets = () => {
               onSubmit={editId ? handleUpdatePet : handleAddPet}
               className="p-6 space-y-5"
             >
-              <div className="grid grid-cols-2 gap-5">
+              <div className="grid gap-5 md:grid-cols-2">
                 <div>
                   <label className="font-semibold text-heading">Pet Name</label>
                   <input

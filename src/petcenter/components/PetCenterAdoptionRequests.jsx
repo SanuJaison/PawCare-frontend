@@ -191,7 +191,7 @@ const PetCenterAdoptionRequests = () => {
   };
 
   return (
-    <div className="flex-1 bg-gray-50 p-6 min-h-screen">
+    <div className="flex-1 min-w-0 overflow-x-hidden bg-gray-50 p-4 sm:p-6 min-h-screen">
       <div>
         <p className="text-3xl font-bold text-heading">Adoption Requests</p>
 
@@ -200,7 +200,7 @@ const PetCenterAdoptionRequests = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-3 gap-4 mt-6">
+      <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         <div className="relative">
           <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
 
@@ -246,7 +246,7 @@ const PetCenterAdoptionRequests = () => {
         </select>
       </div>
 
-      <div className="grid grid-cols-4 gap-5 mt-5">
+      <div className="mt-5 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
         <div className="bg-white border border-gray-100 rounded-2xl p-5 flex items-center gap-4">
           <div className="w-16 h-16 rounded-full bg-pink-card flex items-center justify-center">
             <LuCalendarDays className="text-primary text-3xl" />
@@ -300,15 +300,15 @@ const PetCenterAdoptionRequests = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-12 gap-6 mt-6">
-        <div className="col-span-8 bg-white rounded-2xl shadow-sm border border-gray-100 min-h-[720px] flex flex-col overflow-visible">
+      <div className="mt-6 grid grid-cols-1 gap-6 xl:grid-cols-12">
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 min-h-[720px] flex flex-col overflow-visible xl:col-span-8">
           <div className="p-5 border-b border-gray-100">
             <p className="text-xl font-bold">All Adoption Requests</p>
           </div>
 
           {paginatedRequests.length > 0 ? (
             <>
-              <div className="grid grid-cols-[1.7fr_1.7fr_1.4fr_1.35fr_1.5fr_1.1fr_1fr] gap-4 bg-gray-50 px-5 py-4 text-sm font-bold text-text">
+              <div className="hidden bg-gray-50 px-5 py-4 text-sm font-bold text-text xl:grid xl:grid-cols-[1.7fr_1.7fr_1.4fr_1.35fr_1.5fr_1.1fr_1fr] xl:gap-4">
                 <div>Pet</div>
                 <div>Applicant</div>
                 <div>Request ID</div>
@@ -322,7 +322,7 @@ const PetCenterAdoptionRequests = () => {
                 {paginatedRequests.map((request) => (
                   <div
                     key={request.id}
-                    className="grid grid-cols-[1.7fr_1.7fr_1.4fr_1.35fr_1.5fr_1.1fr_1fr] gap-4 items-center px-5 py-4 border-t border-gray-100 relative"
+                    className="grid gap-3 border-t border-gray-100 px-4 py-4 relative sm:px-5 xl:grid-cols-[1.7fr_1.7fr_1.4fr_1.35fr_1.5fr_1.1fr_1fr] xl:items-center xl:gap-4"
                   >
                     <div className="flex items-center gap-3 min-w-0">
                       <img
@@ -426,7 +426,7 @@ const PetCenterAdoptionRequests = () => {
                 ))}
               </div>
 
-              <div className="p-5 border-t border-gray-100 mt-auto flex justify-between items-center">
+              <div className="mt-auto flex flex-col gap-3 border-t border-gray-100 p-5 sm:flex-row sm:items-center sm:justify-between">
                 <p className="text-sm text-text font-semibold">
                   Showing {paginatedRequests.length} of{" "}
                   {filteredRequests.length} requests
@@ -476,7 +476,7 @@ const PetCenterAdoptionRequests = () => {
           )}
         </div>
 
-        <div className="col-span-4 space-y-6">
+        <div className="space-y-6 xl:col-span-4">
           <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5">
             <div className="flex justify-between items-center mb-5">
               <p className="text-lg font-bold">Today's Requests</p>
@@ -531,7 +531,7 @@ const PetCenterAdoptionRequests = () => {
           <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5">
             <p className="text-lg font-bold mb-5">Request Status Summary</p>
 
-            <div className="flex items-center gap-6">
+            <div className="flex flex-col items-center gap-6 sm:flex-row">
               <div
                 className="w-40 h-40 rounded-full flex items-center justify-center flex-shrink-0"
                 style={{
@@ -651,7 +651,7 @@ const PetCenterAdoptionRequests = () => {
             </div>
 
             <div className="px-8 pb-8 space-y-6">
-              <div className="border border-pink-200 bg-pink-50 rounded-2xl p-6 grid grid-cols-4 gap-6">
+              <div className="grid gap-4 rounded-2xl border border-pink-200 bg-pink-50 p-6 md:grid-cols-2 xl:grid-cols-4">
                 <div>
                   <p className="text-sm text-gray-500">Request Date</p>
                   <p className="font-bold">
@@ -693,14 +693,14 @@ const PetCenterAdoptionRequests = () => {
                   <p className="text-2xl font-bold">Pet Information</p>
                 </div>
 
-                <div className="flex gap-6">
+                <div className="flex flex-col gap-6 md:flex-row">
                   <img
                     src={selectedRequest.petData?.image}
                     alt=""
                     className="w-36 h-36 rounded-2xl object-cover object-top"
                   />
 
-                  <div className="grid grid-cols-4 gap-6 flex-1">
+                  <div className="grid flex-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
                     <div>
                       <p className="text-sm text-text font-semibold">
                         Pet Name
@@ -747,7 +747,7 @@ const PetCenterAdoptionRequests = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid gap-6 md:grid-cols-2">
                 <div className="border border-gray-100 rounded-2xl p-6">
                   <div className="flex items-center gap-3 mb-4">
                     <FaRegUser className="text-primary text-2xl" />
@@ -831,7 +831,7 @@ const PetCenterAdoptionRequests = () => {
                   <p className="text-2xl font-bold">Adoption Details</p>
                 </div>
 
-                <div className="grid grid-cols-2 gap-6">
+                <div className="grid gap-6 md:grid-cols-2">
                   <div className="flex items-center gap-3">
                     <PiHouseLine className="text-primary text-2xl" />
 
@@ -858,7 +858,7 @@ const PetCenterAdoptionRequests = () => {
                     </div>
                   </div>
 
-                  <div className="col-span-2">
+                  <div className="sm:col-span-2">
                     <p className="text-sm text-text font-semibold">
                       Reason for Adoption
                     </p>

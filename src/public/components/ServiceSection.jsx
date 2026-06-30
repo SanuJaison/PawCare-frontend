@@ -42,13 +42,13 @@ const ServiceSection = () => {
   ];
   return (
     <>
-      <div className="px-30 py-15">
+      <div className="px-4 py-12 sm:px-6 lg:px-30 lg:py-15">
         <div className="b-red-700">
           <p className="text-primary-dark font-bold text-xs">OUR SERVICES</p>
           <p className="text-2xl font-semibold">Complete Care for Your Pet</p>
         </div>
 
-        <div className="grid grid-cols-5 gap-6 mt-5">
+        <div className="mt-5 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
         {services.map((service) => (
           <ServiceCards key={service.id} service={service} />
         ))}

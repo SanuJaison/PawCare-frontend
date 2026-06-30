@@ -1,4 +1,4 @@
-﻿// import React from "react";
+// import React from "react";
 
 import { useEffect, useState } from "react";
 import {
@@ -398,7 +398,7 @@ const PetCenterDashboard = () => {
   ];
 
   return (
-    <div className="flex-1 bg-gray-50 p-6 min-h-screen">
+    <div className="flex-1 min-w-0 overflow-x-hidden bg-gray-50 p-4 sm:p-6 min-h-screen">
       <style>
         {`
           .recharts-wrapper:focus,
@@ -409,7 +409,7 @@ const PetCenterDashboard = () => {
         `}
       </style>
 
-      <div className="flex justify-between items-start">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <p className="text-3xl font-bold text-heading">
             Welcome back, <span className="text-primary">Admin!</span> 👋
@@ -420,7 +420,7 @@ const PetCenterDashboard = () => {
           </p>
         </div>
 
-        <div className="bg-white border border-gray-200 rounded-xl shadow-sm px-4 py-3 flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3 rounded-xl border border-gray-200 bg-white px-4 py-3 shadow-sm sm:flex-nowrap">
           <LuCalendar className="text-primary text-lg" />
 
           <p className="text-sm font-semibold whitespace-nowrap">
@@ -440,7 +440,7 @@ const PetCenterDashboard = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-6 gap-4 mt-6">
+      <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-6">
         {dataCards.map((card) => (
           <div
             key={card.title}
@@ -469,8 +469,8 @@ const PetCenterDashboard = () => {
         ))}
       </div>
 
-      <div className="grid grid-cols-12 gap-5 mt-6">
-        <div className="col-span-5 bg-white rounded-2xl p-5 shadow-sm border border-gray-100 h-[430px]">
+      <div className="mt-6 grid grid-cols-1 gap-5 xl:grid-cols-12">
+        <div className="h-[430px] rounded-2xl border border-gray-100 bg-white p-5 shadow-sm xl:col-span-5">
           <div className="flex justify-between items-center mb-4">
             <p className="text-xl font-bold">Appointments Overview</p>
 
@@ -500,7 +500,7 @@ const PetCenterDashboard = () => {
           </div>
         </div>
 
-        <div className="col-span-3 bg-white rounded-2xl p-5 shadow-sm border border-gray-100 h-[430px]">
+        <div className="h-[430px] rounded-2xl border border-gray-100 bg-white p-5 shadow-sm xl:col-span-3">
           <div className="flex justify-between items-center mb-4">
             <p className="text-xl font-bold">Recent Appointments</p>
 
@@ -576,7 +576,7 @@ const PetCenterDashboard = () => {
           )}
         </div>
 
-        <div className="col-span-4 bg-white rounded-2xl p-5 shadow-sm border border-gray-100 h-[430px]">
+        <div className="h-[430px] rounded-2xl border border-gray-100 bg-white p-5 shadow-sm xl:col-span-4">
           <p className="text-xl font-bold mb-3">Adoption Requests Summary</p>
 
           <div className="h-[175px] outline-none">
@@ -634,7 +634,7 @@ const PetCenterDashboard = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-3 gap-5 mt-6">
+      <div className="mt-6 grid gap-5 xl:grid-cols-3">
         <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 min-h-[330px]">
           <div className="flex justify-between items-center mb-4">
             <p className="text-xl font-bold">Recent Users</p>
@@ -813,7 +813,7 @@ const PetCenterDashboard = () => {
         </div>
 
         {adoptionRequests.length > 0 ? (
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid gap-4 lg:grid-cols-2">
             {adoptionRequests.slice(0, 4).map((request) => (
               <div
                 key={request.id}

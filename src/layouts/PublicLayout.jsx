@@ -1,17 +1,17 @@
-// import React from 'react'
-
-import { Outlet } from "react-router-dom"
-import Navbar from "../components/Navbar"
-import Footer from "../components/Footer"
+﻿import { Outlet } from "react-router-dom";
+import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
 
 const PublicLayout = () => {
   return (
     <>
-      <Navbar/>
-      <Outlet/>
-      <Footer/>
+      <Navbar />
+      <main className="pt-[72px] sm:pt-20">
+        <Outlet />
+      </main>
+      <Footer />
     </>
-  )
-}
+  );
+};
 
-export default PublicLayout
+export default PublicLayout;

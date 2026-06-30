@@ -350,14 +350,14 @@ const Checkout = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="max-w-450 mx-auto p-6">
-        <div className="flex justify-between items-center mb-8">
+      <div className="mx-auto w-full max-w-[112rem] p-4 sm:p-6">
+        <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <p className="text-4xl font-bold mb-2">Checkout</p>
             <p className="text-text">Complete your order and payment details</p>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex w-full flex-wrap items-center gap-3 sm:w-auto sm:gap-4">
             <div className="text-center">
               <div className="w-12 h-12 rounded-full bg-pink-card text-primary flex items-center justify-center mx-auto">
                 <IoCartOutline className="text-2xl" />
@@ -365,7 +365,7 @@ const Checkout = () => {
               <p className="text-text font-semibold text-sm mt-1">Cart</p>
             </div>
 
-            <div className="w-24 h-0.5 bg-primary"></div>
+            <div className="hidden h-0.5 w-12 bg-primary sm:block lg:w-24"></div>
 
             <div className="text-center">
               <div className="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center mx-auto">
@@ -376,7 +376,7 @@ const Checkout = () => {
               </p>
             </div>
 
-            <div className="w-24 h-0.5 bg-gray-300"></div>
+            <div className="hidden h-0.5 w-12 bg-gray-300 sm:block lg:w-24"></div>
 
             <div className="text-center">
               <div className="w-12 h-12 rounded-full bg-gray-100 text-gray-500 flex items-center justify-center mx-auto">

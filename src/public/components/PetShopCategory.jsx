@@ -1,16 +1,22 @@
-// import React from 'react'
-
-const PetShopCategory = ({ category }) => {
+﻿const PetShopCategory = ({ category, isActive, onSelect }) => {
   return (
-    <div className="bg-white border border-gray-100 rounded-2xl p-6 flex flex-col items-center justify-center gap-4 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+    <button
+      type="button"
+      onClick={() => onSelect(category.name)}
+      className={`flex h-full flex-col items-center justify-center gap-4 rounded-2xl border p-5 text-center shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${
+        isActive
+          ? "border-primary bg-pink-card text-primary"
+          : "border-gray-100 bg-white text-heading"
+      }`}
+    >
       <img
         src={category.image}
         alt={category.name}
-        className="w-20 h-20 object-contain"
+        className="h-20 w-20 object-contain"
       />
 
-      <p className="font-bold text-heading">{category.name}</p>
-    </div>
+      <span className="font-bold">{category.name}</span>
+    </button>
   );
 };
 

@@ -1,4 +1,4 @@
-﻿// import React from 'react'
+// import React from 'react'
 import { Link } from "react-router-dom";
 import bruno from "../../assets/golden retriever.jpg";
 import luna from "../../assets/persian cat.jpg";
@@ -34,12 +34,12 @@ const AdoptionSection = () => {
   ];
   return (
     <>
-      <div className="px-25">
-        <div className="grid grid-cols-[30%_70%] bg-amber-50 px-8 py-4 rounded-xl">
-          <div className="space-y-3 pt-10">
+      <div className="px-4 py-8 sm:px-6 lg:px-10 xl:px-25">
+        <div className="grid gap-6 rounded-xl bg-amber-50 px-4 py-6 sm:px-6 lg:grid-cols-[30%_70%] lg:px-8">
+          <div className="space-y-3 lg:pt-10">
             <p className="text-primary-dark font-bold text-xs">ADOPTION</p>
-            <p className="text-2xl font-semibold w-50">Give them a Forever Home</p>
-            <p className="text-text font-semibold w-70">
+            <p className="max-w-xs text-2xl font-semibold">Give them a Forever Home</p>
+            <p className="max-w-sm text-text font-semibold">
               Lovely pets are waiting for a caring family. Adopt and make a difference
             </p>
             <Link
@@ -49,7 +49,7 @@ const AdoptionSection = () => {
               View All Pets
             </Link>
           </div>
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {pets.map((pet) => (
               <AdoptionCards key={pet.id} pet={pet} />
             ))}

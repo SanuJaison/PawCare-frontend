@@ -1,7 +1,6 @@
-// import React from 'react'
+﻿import { useEffect, useState } from "react";
 import { IoPaw } from "react-icons/io5";
 import ProductCard from "./ProductCard";
-
 import whiskasImg from "../../assets/whiskas-Photoroom.png";
 import chewToyImg from "../../assets/chewtoy-Photoroom.png";
 import brushImg from "../../assets/petbrush-Photoroom.png";
@@ -10,10 +9,9 @@ import petbedImg from "../../assets/petbed2-Photoroom.png";
 import petshampooImg from "../../assets/shampoo2-Photoroom.png";
 import collarImg from "../../assets/collar2-Photoroom.png";
 import treatsImg from "../../assets/treat2-Photoroom.png";
-import { useEffect, useState } from "react";
 import { getAllProductsAPI } from "../../services/allAPI";
 
-const FeaturedProducts = () => {
+const FeaturedProducts = ({ selectedCategory = "All Products" }) => {
   const [apiProducts, setApiProducts] = useState([]);
   const [showAllProducts, setShowAllProducts] = useState(false);
 
@@ -27,6 +25,7 @@ const FeaturedProducts = () => {
       price: "₹1,299",
       rating: 4.8,
       reviews: 120,
+      category: "Food",
     },
     {
       id: "static-2",
@@ -37,6 +36,7 @@ const FeaturedProducts = () => {
       price: "₹649",
       rating: 4.7,
       reviews: 98,
+      category: "Food",
     },
     {
       id: "static-3",
@@ -47,6 +47,7 @@ const FeaturedProducts = () => {
       price: "₹299",
       rating: 4.6,
       reviews: 76,
+      category: "Toys",
     },
     {
       id: "static-4",
@@ -57,6 +58,7 @@ const FeaturedProducts = () => {
       price: "₹399",
       rating: 4.5,
       reviews: 64,
+      category: "Grooming",
     },
     {
       id: "static-5",
@@ -67,6 +69,7 @@ const FeaturedProducts = () => {
       price: "₹899",
       rating: 4.7,
       reviews: 88,
+      category: "Beds & Mats",
     },
     {
       id: "static-6",
@@ -77,6 +80,7 @@ const FeaturedProducts = () => {
       price: "₹349",
       rating: 4.6,
       reviews: 55,
+      category: "Grooming",
     },
     {
       id: "static-7",
@@ -87,6 +91,7 @@ const FeaturedProducts = () => {
       price: "₹199",
       rating: 4.6,
       reviews: 111,
+      category: "Accessories",
     },
     {
       id: "static-8",
@@ -97,8 +102,25 @@ const FeaturedProducts = () => {
       price: "₹249",
       rating: 4.5,
       reviews: 69,
+      category: "Treats",
     },
   ];
+
+  const categoryAliases = {
+    "Health & Care": ["Health & Care", "Health"],
+    "Beds & Mats": ["Beds & Mats", "Beds", "Bed"],
+  };
+
+  const matchesCategory = (product) => {
+    if (selectedCategory === "All Products") return true;
+
+    const validCategories = categoryAliases[selectedCategory] || [selectedCategory];
+
+    return validCategories.some(
+      (category) =>
+        product.category?.toLowerCase() === category.toLowerCase(),
+    );
+  };
 
   const loadProducts = async () => {
     const result = await getAllProductsAPI();
@@ -116,6 +138,10 @@ const FeaturedProducts = () => {
     loadProducts();
   }, []);
 
+  useEffect(() => {
+    setShowAllProducts(false);
+  }, [selectedCategory]);
+
   const allProducts = [
     ...staticProducts,
     ...apiProducts.map((product) => ({
@@ -126,41 +152,57 @@ const FeaturedProducts = () => {
     })),
   ];
 
-  const visibleProducts = showAllProducts
-    ? allProducts
-    : staticProducts.slice(0, 8);
+  const filteredProducts = allProducts.filter(matchesCategory);
+
+  const visibleProducts =
+    selectedCategory === "All Products" && !showAllProducts
+      ? filteredProducts.slice(0, 8)
+      : filteredProducts;
 
   return (
-    <div className="py-16 px-10">
+    <section id="shop-products" className="px-4 py-16 sm:px-6 lg:px-10">
       <div className="mb-12">
         <div className="w-full text-center">
-          <p className="font-bold text-primary text-3xl">FEATURED PRODUCTS</p>
+          <p className="text-3xl font-bold text-primary">
+            {selectedCategory === "All Products"
+              ? "FEATURED PRODUCTS"
+              : selectedCategory.toUpperCase()}
+          </p>
 
-          <div className="flex justify-center items-center gap-3 mt-2">
-            <div className="w-12 h-0.5 bg-primary"></div>
-            <IoPaw className="text-primary text-xl" />
-            <div className="w-12 h-0.5 bg-primary"></div>
+          <div className="mt-2 flex items-center justify-center gap-3">
+            <div className="h-0.5 w-12 bg-primary"></div>
+            <IoPaw className="text-xl text-primary" />
+            <div className="h-0.5 w-12 bg-primary"></div>
           </div>
         </div>
       </div>
 
-      <div className="grid grid-cols-4 gap-6">
-        {visibleProducts.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
+      {visibleProducts.length > 0 ? (
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+          {visibleProducts.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
+      ) : (
+        <div className="rounded-3xl border border-pink-100 bg-white p-10 text-center shadow-sm">
+          <p className="text-2xl font-bold text-heading">No products found</p>
+          <p className="mt-2 font-semibold text-text">
+            Products for this category will appear here when they are added.
+          </p>
+        </div>
+      )}
 
-      {allProducts.length > 8 && (
+      {selectedCategory === "All Products" && filteredProducts.length > 8 && (
         <div className="flex justify-center">
           <button
             onClick={() => setShowAllProducts(!showAllProducts)}
-            className="border border-primary text-primary px-6 py-3 rounded-xl font-semibold mt-6 hover:bg-primary hover:text-white transition whitespace-nowrap"
+            className="mt-6 whitespace-nowrap rounded-xl border border-primary px-6 py-3 font-semibold text-primary transition hover:bg-primary hover:text-white"
           >
             {showAllProducts ? "Show Less" : "View All Products"}
           </button>
         </div>
       )}
-    </div>
+    </section>
   );
 };
 
