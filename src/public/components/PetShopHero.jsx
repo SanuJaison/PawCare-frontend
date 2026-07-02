@@ -11,16 +11,17 @@ import { TbTruck } from "react-icons/tb";
 const PetShopHero = () => {
   return (
     <>
-      <div className="bg-pink-bg flex min-h-[calc(100svh-72px)] flex-col items-center justify-center gap-8 px-4 py-10 text-center md:px-8 lg:min-h-[calc(100vh-80px)] lg:flex-row lg:justify-between lg:gap-6 lg:px-10 lg:py-10 lg:text-left xl:gap-10 xl:px-16 2xl:px-20">
-        <div className="w-full max-w-3xl min-w-0 space-y-6 px-0 lg:flex-[1_1_52%] lg:px-0 xl:max-w-[56rem]">
+      <div className="bg-pink-bg flex min-h-[calc(100svh-72px)] flex-col items-center justify-center gap-8 px-4 py-10 text-center md:px-8 lg:h-screen lg:flex-row lg:justify-between lg:gap-8 lg:px-10 lg:py-0 lg:text-left xl:gap-12">
+        <div className="w-full max-w-2xl min-w-0 space-y-6 px-0 lg:h-auto lg:max-w-[56rem] lg:px-10">
           <p className="mb-5 flex items-center justify-center gap-2 text-lg font-bold text-primary-dark lg:justify-start">
             <IoPaw className="text-primary-dark text-xl" />
             PET SHOP
           </p>
-          <div className="text-4xl font-bold leading-tight sm:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl">
+          <div className="text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
             <p>Everything Your Pet</p>
             <p className="flex flex-wrap justify-center gap-x-3 gap-y-1 text-primary-dark lg:justify-start">
-              <span className="text-heading">Needs,</span> All in One Place
+              <span className="text-heading">Needs,</span>
+              <span>All in One Place</span>
             </p>
           </div>
           <p className="mx-auto max-w-md text-text font-semibold lg:mx-0">
@@ -36,28 +37,28 @@ const PetShopHero = () => {
             </Link>
           </div>
 
-          <div className="grid gap-3 lg:max-w-[54rem] lg:grid-cols-3">
+          <div className="grid max-w-3xl gap-3 sm:grid-cols-3">
             <div className="flex items-center gap-2 rounded-xl bg-white p-3 text-left font-semibold shadow-sm">
               <FaAward className="shrink-0 text-3xl text-primary" />
-              <p className="min-w-0 whitespace-nowrap text-sm">Premium Quality Products</p>
+              <p className="min-w-0 text-sm leading-tight">Premium Quality Products</p>
             </div>
 
             <div className="flex items-center gap-2 rounded-xl bg-white p-3 text-left font-semibold shadow-sm">
               <FaShieldDog className="shrink-0 text-3xl text-primary" />
-              <p className="min-w-0 whitespace-nowrap text-sm">Safe & Pet Friendly Products</p>
+              <p className="min-w-0 text-sm leading-tight">Safe & Pet Friendly Products</p>
             </div>
 
             <div className="flex items-center gap-2 rounded-xl bg-white p-3 text-left font-semibold shadow-sm">
               <TbTruck className="shrink-0 text-3xl text-primary" />
-              <p className="min-w-0 whitespace-nowrap text-sm">Fast & Reliable Delivery</p>
+              <p className="min-w-0 text-sm leading-tight">Fast & Reliable Delivery</p>
             </div>
           </div>
         </div>
-        <div className="relative h-72 w-full max-w-xl min-w-0 overflow-hidden sm:h-96 lg:h-[34rem] lg:flex-[0_1_44%] lg:max-w-[42rem] xl:h-[40rem] xl:max-w-[48rem]">
+        <div className="relative h-72 w-full max-w-xl min-w-0 overflow-hidden sm:h-96 lg:h-150 lg:max-w-[44rem] xl:max-w-[48rem]">
           <img
             src={blobImg}
             alt=""
-            className="absolute left-1/2 top-8 z-0 h-56 -translate-x-1/2 sm:h-80 lg:left-16 lg:h-[30rem] lg:translate-x-0 xl:h-[36rem]"
+            className="absolute left-1/2 top-8 z-0 h-56 -translate-x-1/2 sm:h-80 lg:left-20 lg:h-130 lg:translate-x-0"
           />
           <img src={heroImg} alt="" className="relative z-10 h-full w-full object-contain" />
         </div>

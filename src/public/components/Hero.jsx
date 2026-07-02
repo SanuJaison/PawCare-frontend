@@ -9,7 +9,7 @@ import blobImg from "../../assets/blob-haikei (1).png";
 const Hero = () => {
   return (
     <>
-      <div className="bg-pink-bg flex min-h-[calc(100svh-72px)] flex-col items-center justify-center gap-8 px-4 py-10 text-center md:px-8 lg:h-screen lg:flex-row lg:justify-between lg:px-10 lg:py-0 lg:text-left">
+      <div className="bg-pink-bg flex min-h-[calc(100svh-72px)] flex-col items-center justify-center gap-8 px-4 py-10 text-center md:px-8 lg:h-screen lg:flex-row lg:justify-between lg:gap-8 lg:px-10 lg:py-0 lg:text-left xl:gap-12">
         <div className="w-full max-w-2xl space-y-6 px-0 lg:h-80 lg:px-10">
           <div className="text-4xl font-bold sm:text-5xl lg:text-6xl">
             <p>Happy Pets,</p>
@@ -36,7 +36,7 @@ const Hero = () => {
             </Link>
           </div>
         </div>
-        <div className="relative h-72 w-full max-w-xl overflow-hidden sm:h-96 lg:h-150">
+        <div className="relative h-72 w-full max-w-xl overflow-hidden sm:h-96 lg:h-150 lg:max-w-[44rem] xl:max-w-[48rem]">
           <img
             src={blobImg}
             alt=""
