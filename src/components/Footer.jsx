@@ -1,4 +1,4 @@
-﻿import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FaFacebook, FaPhoneAlt, FaYoutube } from "react-icons/fa";
 import { FaInstagram, FaXTwitter } from "react-icons/fa6";
 import { IoLocationSharp, IoMail, IoPaw } from "react-icons/io5";
@@ -29,8 +29,8 @@ const Footer = () => {
 
   return (
     <footer className="bg-pink-bg">
-      <div className="grid gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[1.2fr_1fr_1fr_1.5fr_1.4fr] lg:px-10">
-        <div className="flex flex-col items-start gap-5 border-gray-200 lg:border-r-2 lg:pr-6">
+      <div className="grid gap-8 px-4 py-10 sm:px-6 md:grid-cols-2 lg:px-10 xl:grid-cols-[1.2fr_1fr_1fr_1.5fr_1.4fr]">
+        <div className="flex flex-col items-start gap-5 border-gray-200 xl:border-r-2 xl:pr-6">
           <Link to="/" className="flex items-center gap-2">
             <IoPaw className="text-primary text-5xl" />
             <div>
@@ -52,7 +52,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-3 border-gray-200 lg:items-center lg:border-r-2">
+        <div className="flex flex-col gap-3 border-gray-200 xl:items-center xl:border-r-2">
           <p className="text-heading font-semibold text-lg">Quick Links</p>
           <div className="space-y-1">
             {quickLinks.map((item) => (
@@ -63,7 +63,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-3 border-gray-200 lg:items-center lg:border-r-2">
+        <div className="flex flex-col gap-3 border-gray-200 xl:items-center xl:border-r-2">
           <p className="text-heading font-semibold text-lg">Our Services</p>
           <div className="space-y-1">
             {services.map((item) => (
@@ -74,7 +74,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-3 border-gray-200 lg:border-r-2 lg:px-8">
+        <div className="flex flex-col gap-3 border-gray-200 xl:border-r-2 xl:px-8">
           <p className="text-heading font-semibold text-lg">Contact Us</p>
           <div className="space-y-3">
             <p className="flex items-start gap-3 text-text font-semibold">
@@ -96,7 +96,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-3 lg:px-8">
+        <div className="flex flex-col gap-3 xl:px-8">
           <p className="text-heading font-semibold text-lg">Newsletter</p>
           <div className="space-y-3">
             <p className="text-text font-semibold">

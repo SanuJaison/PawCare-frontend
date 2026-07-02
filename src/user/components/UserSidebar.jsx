@@ -66,11 +66,11 @@ const UserSidebar = ({ isOpen = false, onClose }) => {
       />
 
       <aside
-        className={`fixed left-0 top-0 z-50 flex h-dvh w-80 max-w-[86vw] flex-col justify-between border-r border-gray-100 bg-white px-4 py-4 shadow-2xl transition-transform duration-300 lg:sticky lg:top-20 lg:z-auto lg:h-[calc(100vh-80px)] lg:w-75 lg:max-w-none lg:translate-x-0 lg:px-5 lg:py-5 ${
+        className={`fixed left-0 top-0 z-50 flex h-dvh w-80 max-w-[86vw] flex-col justify-between border-r border-gray-100 bg-white px-4 py-4 shadow-2xl transition-transform duration-300 lg:top-20 lg:z-30 lg:h-[calc(100vh-80px)] lg:w-75 lg:max-w-none lg:translate-x-0 lg:px-5 lg:py-5 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <div className="min-h-0 min-w-0 overflow-y-auto pr-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:overflow-visible lg:pr-0">
+        <div className="min-h-0 min-w-0 flex-1 overflow-y-auto pb-3 pr-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:pr-1">
           <div className="mb-4 flex items-center justify-between lg:hidden">
             <div>
               <p className="text-xl font-bold text-heading">Dashboard Menu</p>
@@ -117,7 +117,7 @@ const UserSidebar = ({ isOpen = false, onClose }) => {
             </p>
           </div>
 
-          <div className="mt-6 flex flex-col gap-3 lg:mt-10">
+          <div className="mt-5 flex flex-col gap-3 lg:mt-6">
             {menuItems.map((item) => (
               <NavLink
                 key={item.path}
@@ -138,7 +138,7 @@ const UserSidebar = ({ isOpen = false, onClose }) => {
           </div>
         </div>
 
-        <div className="mt-4 border-t border-gray-100 pl-4 pt-4">
+        <div className="mt-3 shrink-0 border-t border-gray-100 pl-4 pt-4">
           <button
             onClick={handleLogout}
             className="flex shrink-0 items-center gap-3 rounded-xl py-3 text-sm font-semibold text-red-500 transition hover:text-red-600 lg:py-0"

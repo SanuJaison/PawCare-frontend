@@ -13,10 +13,10 @@ const UserLayout = () => {
   return (
     <>
       <Navbar />
-      <div className="flex min-h-screen bg-gray-50 pt-[72px] sm:pt-20 lg:flex-row">
+      <div className="min-h-screen bg-gray-50 pt-[72px] sm:pt-20 lg:pl-75">
         <UserSidebar isOpen={isSidebarOpen} onClose={closeSidebar} />
 
-        <div className="min-w-0 flex-1">
+        <div className="min-w-0">
           <div className="sticky top-[72px] z-30 border-b border-gray-100 bg-white px-4 py-3 shadow-sm sm:top-20 sm:px-6 lg:hidden">
             <button
               type="button"
